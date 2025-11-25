@@ -1,13 +1,12 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-dark: #101828;
+  --color-gray: #8e929a;
+  --color-primary: #3470ff;
+  --color-primary-dark: #0b44cd;
+  --color-border: #dadde1;
+  --color-bg-light: #f2f4f7;
+  --color-bg-soft: #f7f7f7;
+  --color-white: #ffffff;
 }
 
 html,
@@ -17,9 +16,11 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-gray);
+  background: var(--color-white);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font-manrope), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -29,14 +30,52 @@ body {
   padding: 0;
   margin: 0;
 }
-
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 a {
-  color: inherit;
+  color: var(--color-dark);
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+button {
+  cursor: pointer;
+}
+
+.section {
+  padding: 84px 0 124px;
+}
+
+.container {
+  width: 100%;
+  min-width: 320px;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* Styles for Tablet devices */
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
   }
+}
+
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 120px;
+  }
+}
+
+.error {
+  margin: 0 auto;
+}
+
+.loader {
+  margin: 0 auto;
 }

@@ -1,0 +1,15 @@
+.catalog__btn {
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  padding: 12px 0;
+  width: 276px;
+  background: var(--color-primary);
+  line-height: 1.25;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.catalog__btn:hover {
+  background: var(--color-primary-dark);
+}

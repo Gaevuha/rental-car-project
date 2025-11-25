@@ -1,0 +1,16 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.headerLink {
+  display: block;
+  padding: 24px 0;
+  line-height: 1.25;
+}
+
+.headerLink.active {
+  color: var(--color-primary-dark);
+}
