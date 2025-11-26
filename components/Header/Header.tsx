@@ -8,7 +8,9 @@ const Header = async () => {
     <header className={styles.header}>
       <div className={`${styles.container__header} container`}>
         <Link className={styles.headerLink} href="/" aria-label="Home">
-          Rental Car
+          <svg className={styles.logo}>
+            <use href="/icons/sprite.svg#icon-logo" />
+          </svg>
         </Link>
         <Navigation />
       </div>

@@ -7,6 +7,7 @@ import CarCard from "@/components/CarCard/CarCard";
 import FiltersClient from "@/components/Filters/FiltersClient";
 import LoadMoreButton from "@/components/LoadMoreButton/LoadMoreButton";
 import type { CarsResponse } from "@/types/car";
+import styles from "./CatalogPage.module.css";
 
 interface CatalogClientProps {
   initialData: CarsResponse;
@@ -28,16 +29,18 @@ export default function CatalogClient({
   };
 
   return (
-    <div className="catalog-container">
-      <FiltersClient brands={brands} />
+    <section className={`${styles.catalog__section} section`}>
+      <div className={`${styles.catalog__container} container`}>
+        <FiltersClient brands={brands} />
 
-      <ul className="cars__list">
-        {cars.map((car) => (
-          <CarCard key={car.id} car={car} />
-        ))}
-      </ul>
+        <ul className="cars__list">
+          {cars.map((car) => (
+            <CarCard key={car.id} car={car} />
+          ))}
+        </ul>
 
-      {page < totalPages && <LoadMoreButton onLoadMore={handleLoadMore} />}
-    </div>
+        {page < totalPages && <LoadMoreButton onLoadMore={handleLoadMore} />}
+      </div>
+    </section>
   );
 }

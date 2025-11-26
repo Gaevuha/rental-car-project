@@ -8,3 +8,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.headerLink {
+  padding: 24px 0;
+}
+.logo {
+  width: 104px;
+  height: 16px;
+}

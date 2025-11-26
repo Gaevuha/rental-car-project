@@ -1,18 +1,19 @@
-// components/Filters/FiltersClient.tsx
 "use client";
 
 import { useState } from "react";
 import { useCarsStore } from "@/lib/store/carsStore";
+import CustomSelect from "../CustomSelect/CustomSelect";
+import styles from "./Filters.module.css";
 
 interface FiltersClientProps {
-  brands: string[]; // Бренди вже передані з сервера
+  brands: string[];
 }
 
 export default function FiltersClient({ brands }: FiltersClientProps) {
   const { setFilters, loadCars } = useCarsStore();
 
-  const [brand, setBrand] = useState("");
-  const [price, setPrice] = useState("");
+  const [brand, setBrand] = useState(""); // "" = всі бренди
+  const [price, setPrice] = useState(""); // "" = всі ціни
   const [minMileage, setMinMileage] = useState("");
   const [maxMileage, setMaxMileage] = useState("");
 
@@ -27,83 +28,59 @@ export default function FiltersClient({ brands }: FiltersClientProps) {
     await loadCars({ page: 1 });
   };
 
-  const handleReset = () => {
-    setBrand("");
-    setPrice("");
-    setMinMileage("");
-    setMaxMileage("");
-    setFilters({});
-    loadCars({ page: 1 });
-  };
+  const formatNumber = (num: string) =>
+    num ? Number(num).toLocaleString("en-US") : "";
 
   return (
-    <div className="filters-container">
-      {/* Car brand */}
-      <div className="filter-block">
-        <label htmlFor="brand-select" className="filter-label">
-          Car brand
-        </label>
-        <select
-          id="brand-select"
+    <div className={styles.filtersContainer}>
+      {/* BRAND */}
+      <div className={styles.filterBlock}>
+        <CustomSelect
+          label="Car brand"
+          options={["", ...brands]} // перший пункт порожній
           value={brand}
-          onChange={(e) => setBrand(e.target.value)}
-          className="select-input"
-        >
-          <option value="">Choose a brand</option>
-          {brands.map((b) => (
-            <option key={b} value={b}>
-              {b}
-            </option>
-          ))}
-        </select>
+          onChange={setBrand}
+          placeholder="Choose a brand" // відображається якщо value = ""
+          formatOptionLabel={(option) => option || "(All)"} // у випадаючому буде "(All)"
+        />
       </div>
 
-      {/* Price */}
-      <div className="filter-block">
-        <label htmlFor="price-select" className="filter-label">
-          Price / 1 hour
-        </label>
-        <select
-          id="price-select"
+      {/* PRICE */}
+      <div className={styles.filterBlock}>
+        <CustomSelect
+          label="Price / 1 hour"
+          options={["", "30", "40", "50", "60", "70", "80", "90", "100"]}
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          className="select-input"
-        >
-          <option value="">Choose a price</option>
-          {[30, 40, 50, 60, 70, 80, 90, 100].map((p) => (
-            <option key={p} value={p}>
-              ${p}
-            </option>
-          ))}
-        </select>
+          onChange={setPrice}
+          placeholder="Choose a price"
+          formatOptionLabel={(option) => (option ? `To $${option}` : "(All)")}
+        />
       </div>
 
-      {/* Mileage */}
-      <div className="filter-block mileage-filter">
-        <label className="filter-label">Car mileage / km</label>
-        <div className="mileage-inputs">
+      {/* MILEAGE */}
+      <div className={styles.filterBlock}>
+        <label className={styles.filterLabel}>Car mileage / km</label>
+        <div style={{ display: "flex" }}>
           <input
-            type="number"
+            type="text"
             placeholder="From"
-            value={minMileage}
-            onChange={(e) => setMinMileage(e.target.value)}
-            className="mileage-input"
-            min="0"
+            className={styles.mileageInputLeft}
+            value={minMileage ? `From ${formatNumber(minMileage)}` : ""}
+            onChange={(e) => setMinMileage(e.target.value.replace(/\D/g, ""))}
           />
           <input
-            type="number"
+            type="text"
             placeholder="To"
-            value={maxMileage}
-            onChange={(e) => setMaxMileage(e.target.value)}
-            className="mileage-input"
-            min="0"
+            className={styles.mileageInputRight}
+            value={maxMileage ? `To ${formatNumber(maxMileage)}` : ""}
+            onChange={(e) => setMaxMileage(e.target.value.replace(/\D/g, ""))}
           />
         </div>
       </div>
 
-      {/* Buttons */}
-      <div className="filter-buttons">
-        <button className="search-btn" onClick={handleSearch}>
+      {/* BUTTON */}
+      <div className={`${styles.filterBlock} ${styles.searchBlock}`}>
+        <button className={styles.searchBtn} onClick={handleSearch}>
           Search
         </button>
       </div>
