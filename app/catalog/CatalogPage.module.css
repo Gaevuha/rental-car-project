@@ -3,4 +3,27 @@
   flex-wrap: wrap;
   column-gap: 32px;
   row-gap: 48px;
+  margin-bottom: 92px;
+}
+.loadMoreWrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.loadMoreBtn {
+  border: 1px solid var(--color-primary);
+  border-radius: 12px;
+  padding: 12px 0;
+  width: 182px;
+  height: 44px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-dark);
+  transition: border-color 0.3s ease;
+}
+
+.loadMoreBtn:hover {
+  border-color: var(--color-primary-dark);
 }

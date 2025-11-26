@@ -11,7 +11,6 @@ interface CarCardProps {
 }
 
 const CarCard: React.FC<CarCardProps> = ({ car }) => {
-  // Функція для форматування адреси (беремо тільки місто та країну)
   const formatLocation = (address: string) => {
     const parts = address.split(",").map((part) => part.trim());
     const city = parts[1] || "";
@@ -27,7 +26,7 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
           alt={`${car.brand} ${car.model}`}
           fill
           style={{ objectFit: "cover" }}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1440px) 50vw, 33vw"
         />
       </div>
       <div className={styles.info}>
@@ -46,6 +45,11 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
       <Link href={`/catalog/${car.id}`} className={styles.readMoreLink}>
         Read more
       </Link>
+      <button type="button" className={styles.favoritesBtn}>
+        <svg className={styles.iconFavorites}>
+          <use href="/icons/sprite.svg#icon-favorites" />
+        </svg>
+      </button>
     </li>
   );
 };

@@ -71,7 +71,11 @@ button {
     padding: 0 120px;
   }
 }
-
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .error {
   margin: 0 auto;
 }

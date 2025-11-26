@@ -1,11 +1,12 @@
 // components/Catalog/CatalogClient.tsx
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCarsStore } from "@/lib/store/carsStore";
 import CarCard from "@/components/CarCard/CarCard";
 import FiltersClient from "@/components/Filters/FiltersClient";
-import LoadMoreButton from "@/components/LoadMoreButton/LoadMoreButton";
+
+import Loader from "@/components/Loader/Loader";
 import type { CarsResponse } from "@/types/car";
 import styles from "./CatalogPage.module.css";
 
@@ -19,14 +20,22 @@ export default function CatalogClient({
   brands,
 }: CatalogClientProps) {
   const { cars, page, totalPages, setInitialData, loadCars } = useCarsStore();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setInitialData(initialData);
   }, [initialData, setInitialData]);
 
   const handleLoadMore = async () => {
-    await loadCars({ page: page + 1 });
+    setLoading(true);
+    try {
+      await loadCars({ page: page + 1 });
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const hasMore = page < totalPages;
 
   return (
     <section className={`${styles.catalog__section} section`}>
@@ -39,7 +48,17 @@ export default function CatalogClient({
           ))}
         </ul>
 
-        {page < totalPages && <LoadMoreButton onLoadMore={handleLoadMore} />}
+        {hasMore && (
+          <div className={styles.loadMoreWrapper}>
+            {loading ? (
+              <Loader className={styles.loader} />
+            ) : (
+              <button className={styles.loadMoreBtn} onClick={handleLoadMore}>
+                Load more
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
