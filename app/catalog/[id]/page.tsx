@@ -8,14 +8,12 @@ interface Props {
 }
 
 export default async function CarPage({ params }: Props) {
-  // Деструктуруємо id із промісу
   const { id } = await params;
 
   if (!id) {
     return <p>Car not found</p>;
   }
 
-  // Отримуємо дані про машину з API
   let car: Car | null = null;
   try {
     car = await fetchCarByIdServer(id);

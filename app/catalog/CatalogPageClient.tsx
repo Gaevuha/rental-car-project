@@ -33,7 +33,7 @@ export default function CatalogClient({
       <div className={`${styles.catalog__container} container`}>
         <FiltersClient brands={brands} />
 
-        <ul className="cars__list">
+        <ul className={styles.carList}>
           {cars.map((car) => (
             <CarCard key={car.id} car={car} />
           ))}
