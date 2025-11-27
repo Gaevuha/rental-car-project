@@ -5,12 +5,28 @@ import { Car } from "@/types/car";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./CarCard.module.css";
+import { useCarsStore } from "@/lib/store/carsStore";
 
 interface CarCardProps {
   car: Car;
 }
 
 const CarCard: React.FC<CarCardProps> = ({ car }) => {
+  const { favorites, addToFavorites, removeFromFavorites } = useCarsStore();
+
+  const isFavorite = favorites.some((favCar) => favCar.id === car.id);
+
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault(); // Запобігаємо переходу по посиланню
+    e.stopPropagation(); // Запобігаємо всплиттю події
+
+    if (isFavorite) {
+      removeFromFavorites(car.id);
+    } else {
+      addToFavorites(car);
+    }
+  };
+
   const formatLocation = (address: string) => {
     const parts = address.split(",").map((part) => part.trim());
     const city = parts[1] || "";
@@ -45,9 +61,25 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
       <Link href={`/catalog/${car.id}`} className={styles.readMoreLink}>
         Read more
       </Link>
-      <button type="button" className={styles.favoritesBtn}>
-        <svg className={styles.iconFavorites}>
+      <button
+        type="button"
+        className={styles.favoritesBtn}
+        onClick={handleToggleFavorite}
+        aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+      >
+        <svg
+          className={`${styles.iconFavorites} ${
+            isFavorite ? styles.hidden : ""
+          }`}
+        >
           <use href="/icons/sprite.svg#icon-favorites" />
+        </svg>
+        <svg
+          className={`${styles.iconFavoritesActive} ${
+            isFavorite ? "" : styles.hidden
+          }`}
+        >
+          <use href="/icons/sprite.svg#icon-favorites-active" />
         </svg>
       </button>
     </li>
