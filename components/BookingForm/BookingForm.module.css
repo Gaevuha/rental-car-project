@@ -1,0 +1,367 @@
+.wrapper {
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  padding: 32px;
+  width: 640px;
+  height: 488px;
+}
+
+.titleForm {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: var(--color-dark);
+}
+
+.subtitle {
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.input {
+  position: relative;
+  height: 48px;
+  line-height: 1.25;
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  background: var(--color-bg-soft);
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+
+  color: var(--color-dark);
+}
+
+/* Стилі для автозаповнення */
+.input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-bg-soft) inset;
+  -webkit-text-fill-color: var(--color-dark);
+  border: none;
+  border-radius: 12px;
+}
+
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-bg-soft) inset;
+  -webkit-text-fill-color: var(--color-dark);
+  border: none;
+  border-radius: 12px;
+}
+
+/* Для Firefox та інших браузерів */
+.input:-moz-autofill,
+.input:-moz-autofill:hover,
+.input:-moz-autofill:focus {
+  background-color: var(--color-bg-soft) !important;
+  color: var(--color-dark) !important;
+  border: none;
+  border-radius: 12px;
+}
+
+.inputError {
+  border: 1px solid #d9534f !important;
+  background: #fdf7f7 !important;
+}
+
+/* Стилі автозаповнення для полів з помилками */
+.inputError:-webkit-autofill,
+.inputError:-webkit-autofill:hover,
+.inputError:-webkit-autofill:focus,
+.inputError:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #fdf7f7 inset !important;
+  -webkit-text-fill-color: var(--color-dark) !important;
+  border: 1px solid #d9534f !important;
+  border-radius: 12px;
+}
+
+.inputError:-moz-autofill,
+.inputError:-moz-autofill:hover,
+.inputError:-moz-autofill:focus {
+  background-color: #fdf7f7 !important;
+  color: var(--color-dark) !important;
+  border: 1px solid #d9534f !important;
+  border-radius: 12px;
+}
+
+.textarea {
+  height: 88px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* Стилі автозаповнення для textarea */
+.textarea:-webkit-autofill,
+.textarea:-webkit-autofill:hover,
+.textarea:-webkit-autofill:focus,
+.textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-bg-soft) inset;
+  -webkit-text-fill-color: var(--color-dark);
+  border: none;
+  border-radius: 12px;
+}
+
+.formBtn {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 12px;
+  border-radius: 12px;
+  width: 156px;
+  border: none;
+  font-weight: 600;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 8px auto 0;
+  font-family: inherit;
+}
+
+.formBtn:hover {
+  background: var(--color-primary-dark);
+}
+
+.formBtn:active {
+  transform: translateY(0);
+}
+
+.buttonLoading {
+  background: var(--color-primary-dark);
+  cursor: wait;
+}
+
+.error {
+  position: absolute;
+  top: 48px;
+  left: 10px;
+  color: #d9534f;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.datePickerContainer {
+  width: 100%;
+  position: relative;
+}
+
+.input:focus {
+  background: var(--color-bg-soft);
+  outline: none;
+}
+
+/* Основний контейнер DatePicker */
+
+:global(.custom-datepicker-calendar) {
+  width: 276px !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+:global(.react-datepicker__month-container) {
+  float: none !important;
+}
+
+:global(.custom-datepicker-wrapper) {
+  width: 100%;
+  position: relative;
+}
+
+/* Popper (випадаюче вікно) */
+:global(.custom-datepicker-popper) {
+  z-index: 1000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Основний календар */
+:global(.custom-datepicker-calendar) {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background: white;
+  width: 276px;
+  padding: 0;
+}
+:global(.react-datepicker__month) {
+  width: 276px !important;
+  margin: 0 auto !important;
+  /* padding: 0 8px 16px !important; */
+  box-sizing: border-box !important;
+}
+/* Заголовок календаря */
+:global(.custom-datepicker-header) {
+  padding: 16px 16px 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+:global(.custom-header-top) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+:global(.custom-month-year) {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+:global(.custom-nav-button) {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(.custom-nav-button:hover:not(:disabled)) {
+  background: #f5f5f5;
+  color: #1a1a1a;
+}
+
+:global(.custom-nav-button:disabled) {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Дні тижня */
+:global(.custom-week-days) {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  margin-bottom: 8px;
+}
+
+:global(.custom-week-day) {
+  width: 36px;
+  height: 32px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Контейнер місяця */
+:global(.custom-datepicker-month) {
+  padding: 0 16px 16px;
+  margin: 0;
+}
+
+/* Тиждень */
+:global(.custom-datepicker-week) {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  margin: 0;
+}
+
+/* День */
+:global(.custom-datepicker-day) {
+  width: 36px !important;
+  height: 32px !important;
+  border-radius: 32px !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #1a1a1a !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  cursor: pointer;
+}
+
+:global(.custom-datepicker-day:hover) {
+  background: #f8f9fa !important;
+  border-color: #e0e0e0 !important;
+  color: #1a1a1a !important;
+}
+
+/* Спеціальні стани днів */
+:global(.custom-datepicker-day--today) {
+  background: #f0f0f0 !important;
+  color: #1a1a1a !important;
+  font-weight: 600 !important;
+  border-color: #d0d0d0 !important;
+}
+
+:global(.custom-datepicker-day--outside-month) {
+  color: #ccc !important;
+}
+
+:global(.custom-datepicker-day--disabled) {
+  color: #e0e0e0 !important;
+  cursor: not-allowed !important;
+}
+
+:global(.custom-datepicker-day--disabled:hover) {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: #e0e0e0 !important;
+}
+
+/* Вибраний день */
+:global(.react-datepicker__day--selected) {
+  background: var(--color-primary) !important;
+  color: var(--color-white) !important;
+  border-color: var(--color-primary) !important;
+  font-weight: 600 !important;
+}
+
+:global(.react-datepicker__day--keyboard-selected) {
+  background: #f8f9fa !important;
+  color: #1a1a1a !important;
+  border-color: #e0e0e0 !important;
+}
+
+/* Приховуємо стандартні дні тижня */
+:global(.react-datepicker__day-names) {
+  display: none !important;
+}
+
+/* Дропдауни для місяця/року */
+:global(.custom-datepicker-month-dropdown),
+:global(.custom-datepicker-year-dropdown) {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+:global(.react-datepicker__month-option:hover),
+:global(.react-datepicker__year-option:hover) {
+  background: #f5f5f5;
+}

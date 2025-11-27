@@ -1,7 +1,6 @@
+// app/catalog/[id]/page.tsx
 import { fetchCarByIdServer } from "@/lib/api/serverApi";
-import CarCard from "@/components/CarCard/CarCard";
-import Image from "next/image";
-import { Car } from "@/types/car";
+import DetailCatalogPage from "./DetailCatalogPage";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -14,30 +13,18 @@ export default async function CarPage({ params }: Props) {
     return <p>Car not found</p>;
   }
 
-  let car: Car | null = null;
+  let car = null;
+
   try {
     car = await fetchCarByIdServer(id);
-  } catch (error) {
-    console.error("Error fetching car:", error);
+  } catch (err) {
+    console.error("Error fetching car:", err);
     return <p>Car not found</p>;
   }
 
-  return (
-    <div>
-      <h1>
-        {car.brand} {car.model}
-      </h1>
+  if (!car) {
+    return <p>Car not found</p>;
+  }
 
-      <Image
-        src={car.img}
-        alt={`${car.brand} ${car.model}`}
-        width={600}
-        height={400}
-      />
-
-      <p>{car.description}</p>
-
-      <CarCard car={car} />
-    </div>
-  );
+  return <DetailCatalogPage car={car} />;
 }

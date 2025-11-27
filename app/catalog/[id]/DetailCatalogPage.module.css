@@ -1,0 +1,129 @@
+.containerDetailCar {
+  display: grid;
+  grid-template-columns: 640px 1fr;
+  column-gap: 72px;
+}
+
+.leftColumn {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 40px;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.locationWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.iconLocation {
+  width: 16px;
+  height: 16px;
+  fill: var(--color-dark);
+}
+
+.carImage {
+  width: 100%;
+  height: auto;
+
+  border-radius: 19px;
+}
+
+.bookingForm {
+  width: 100%;
+}
+
+.carByTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: var(--color-dark);
+  margin-bottom: 8px;
+}
+
+.carId {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-gray);
+  margin-left: 16px;
+}
+
+.city,
+.country,
+.mileage,
+.text {
+  color: var(--color-dark);
+}
+.country {
+  margin-left: 3px;
+}
+.mileage {
+  margin-left: 16px;
+}
+
+.carPriceAccent {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: var(--color-primary);
+  margin-bottom: 32px;
+}
+
+.text {
+  max-height: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 4px;
+  background-color: var(--color-white);
+  margin-bottom: 68px;
+}
+
+.text::-webkit-scrollbar {
+  width: 6px;
+}
+
+.text::-webkit-scrollbar-track {
+  background: var(--color-gray);
+  border-radius: 3px;
+}
+
+.text::-webkit-scrollbar-thumb {
+  background: var(--color-gray);
+  border-radius: 3px;
+}
+
+.text::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+.carList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 110px;
+}
+
+.carTitleItem {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--color-dark);
+  margin-bottom: 20px;
+}
+
+.carTextItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+/*bookingForm*/

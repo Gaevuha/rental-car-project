@@ -3,7 +3,6 @@ import { Manrope } from "next/font/google";
 import "modern-normalize/modern-normalize.css";
 import "./globals.css";
 import Header from "@/components/Header/Header";
-import FavoritesInitializer from "./FavoritesInitializer";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -22,7 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={manrope.variable}>
-        <FavoritesInitializer />
         <Header />
         <main>{children}</main>
       </body>
