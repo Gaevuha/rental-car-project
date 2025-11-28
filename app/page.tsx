@@ -6,7 +6,7 @@ export const metadata = generatePageMetadata("home");
 
 export default function Home() {
   return (
-    <section className={`${styles.hero} section`}>
+    <section className={styles.hero}>
       <div className={`${styles.container__hero} container`}>
         <div className={styles.intro}>
           <h1>Find your perfect rental car</h1>
