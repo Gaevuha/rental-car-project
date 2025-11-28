@@ -1,5 +1,8 @@
 import styles from "./Page.module.css";
 import CatalogButton from "@/components/CatalogButton/CatalogButton";
+import { generatePageMetadata } from "./layout";
+
+export const metadata = generatePageMetadata("home");
 
 export default function Home() {
   return (

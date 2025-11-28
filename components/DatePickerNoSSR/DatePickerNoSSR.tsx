@@ -3,6 +3,7 @@
 import React from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import styles from "../BookingForm/BookingForm.module.css";
 
 interface DatePickerProps {
   selected: Date | null;
@@ -39,34 +40,38 @@ const DatePickerNoSSR: React.FC<DatePickerProps> = ({
     const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
     return (
-      <div className="custom-datepicker-header">
-        <div className="custom-header-top">
+      <div className={styles.customHeader}>
+        <div className={styles.headerTop}>
           <button
             onClick={decreaseMonth}
             disabled={prevMonthButtonDisabled}
-            className="custom-nav-button custom-nav-prev"
+            className={`${styles.navButton} custom-nav-button custom-nav-prev`}
             type="button"
-            aria-label="Previous month"
           >
-            ‹
+            <svg className="iconArrow">
+              <use href="/icons/sprite.svg#icon-arrow" />
+            </svg>
           </button>
-          <div className="custom-month-year">
+
+          <div className={styles.monthYear}>
             {date.toLocaleString("en", { month: "long" })} {date.getFullYear()}
           </div>
+
           <button
             onClick={increaseMonth}
             disabled={nextMonthButtonDisabled}
-            className="custom-nav-button custom-nav-next"
+            className={`${styles.navButton} custom-nav-button custom-nav-next`}
             type="button"
-            aria-label="Next month"
           >
-            ›
+            <svg className="iconArrowRotate">
+              <use href="/icons/sprite.svg#icon-arrow" />
+            </svg>
           </button>
         </div>
 
-        <div className="custom-week-days">
+        <div className={styles.weekDays}>
           {weekDays.map((day) => (
-            <div key={day} className="custom-week-day">
+            <div key={day} className={styles.weekDay}>
               {day}
             </div>
           ))}
@@ -75,35 +80,29 @@ const DatePickerNoSSR: React.FC<DatePickerProps> = ({
     );
   };
 
-  // Кастомні класи для днів
   const dayClassName = (date: Date) => {
-    const baseClass = "custom-datepicker-day";
-    const classes = [baseClass];
-
     const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    const day = new Date(date);
 
-    const currentDate = new Date(date);
-    currentDate.setHours(0, 0, 0, 0);
+    const todayStart = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
+    const dayStart = new Date(day.getFullYear(), day.getMonth(), day.getDate());
 
-    if (currentDate.getTime() === today.getTime()) {
+    const classes = ["custom-datepicker-day"];
+
+    if (dayStart.getTime() === todayStart.getTime()) {
       classes.push("custom-datepicker-day--today");
     }
 
-    if (selected && currentDate.getMonth() !== selected.getMonth()) {
-      classes.push("custom-datepicker-day--outside-month");
-    }
-
-    if (currentDate.getTime() < today.getTime()) {
+    if (dayStart < todayStart) {
       classes.push("custom-datepicker-day--disabled");
     }
 
     return classes.join(" ");
   };
-
-  // Функції для класів місяця та тижня
-  const monthClassName = () => "custom-datepicker-month";
-  const weekClassName = () => "custom-datepicker-week";
 
   return (
     <ReactDatePicker
@@ -115,29 +114,17 @@ const DatePickerNoSSR: React.FC<DatePickerProps> = ({
       className={className}
       dateFormat="dd/MM/yyyy"
       minDate={new Date()}
-      // Основні класи для кастомізації
       popperClassName="custom-datepicker-popper"
       calendarClassName="custom-datepicker-calendar"
       wrapperClassName="custom-datepicker-wrapper"
-      monthClassName={monthClassName}
-      weekClassName={weekClassName}
-      // Класи для конкретних елементів
+      monthClassName={() => "custom-datepicker-month"}
+      weekClassName={() => "custom-datepicker-week"}
       dayClassName={dayClassName}
       weekDayClassName={() => "custom-datepicker-weekday"}
-      // Кастомний заголовок
       renderCustomHeader={renderCustomHeader}
-      // Налаштування відображення
       showPopperArrow={false}
-      formatWeekDay={() => ""} // Приховуємо стандартні дні тижня
-      showMonthDropdown
-      showYearDropdown
-      dropdownMode="select"
+      formatWeekDay={() => ""}
       fixedHeight
-      inline={false}
-      // Додаткові пропси для кращого контролю
-      disabledKeyboardNavigation={false}
-      adjustDateOnChange={true}
-      shouldCloseOnSelect={true}
     />
   );
 };

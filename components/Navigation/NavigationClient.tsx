@@ -11,10 +11,8 @@ const NavigationClient = () => {
   const [active, setActive] = useState<null | "home" | "catalog">(null);
 
   useEffect(() => {
-    // Гідрація
     queueMicrotask(() => setHydrated(true));
 
-    // Відновлення з sessionStorage після мікротаску
     const saved = sessionStorage.getItem("activeNav") as
       | "home"
       | "catalog"

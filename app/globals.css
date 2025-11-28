@@ -71,6 +71,10 @@ button {
     padding: 0 120px;
   }
 }
+.mainContent {
+  padding-top: 68px;
+}
+
 .center {
   display: flex;
   justify-content: center;

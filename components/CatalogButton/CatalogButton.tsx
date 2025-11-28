@@ -5,7 +5,6 @@ import styles from "./CatalogButton.module.css";
 
 const CatalogButton = () => {
   const handleClick = () => {
-    // Встановлюємо activeNav = "catalog"
     sessionStorage.setItem("activeNav", "catalog");
   };
 

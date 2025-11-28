@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rental Car - Сервіс оренди автомобілів
 
-## Getting Started
+## Про проєкт
 
-First, run the development server:
+Rental Car — це сучасний веб-застосунок для оренди автомобілів на базі Next.js 15, що дозволяє користувачам знаходити та бронювати ідеальний автомобіль для будь-якої подорожі. Платформа пропонує широкий вибір транспортних засобів різних брендів та цінових категорій.
+
+## Основні можливості
+
+- **Каталог автомобілів** - Перегляд усіх доступних автомобілів з пагінацією
+- **Розширена фільтрація** - Фільтрація за брендом, ціною, пробігом (виконується на бекенді)
+- **Обрані автомобілі** - Додавання до обраних зі збереженням стану при оновленні сторінки
+- **Детальна інформація** - Детальні сторінки кожного автомобіля з усіма характеристиками
+- **Форма бронювання** - Зручна форма оренди з валідацією даних
+- **Сучасний UI/UX** - Сучасний дизайн та зручний інтерфейс
+
+## Технологічний стек
+
+| Шар                  | Технології                                                      |
+| -------------------- | --------------------------------------------------------------- |
+| **Фронтенд**         | Next.js 15, React 18, TypeScript, CSS Modules, React DatePicker |
+| **Стейт-менеджмент** | Zustand (для глобального стану)                                 |
+| **API**              | REST API, Server Actions                                        |
+| **Стилізація**       | CSS Modules, Modern Normalize                                   |
+| **Шрифти**           | Manrope (Google Fonts)                                          |
+| **Деployment**       | Vercel                                                          |
+
+## Функціональні вимоги (згідно ТЗ)
+
+### Головна сторінка
+
+- Перехід на сторінку каталогу через кнопку "View Catalog"
+
+### Сторінка каталогу
+
+- **Фільтрація на бекенді** за:
+  - Брендом автомобіля (один бренд)
+  - Ціною (одна ціна)
+  - Пробігом автомобіля (від/до окремо або разом)
+- **Пагінація** - Кнопка "Load More" для завантаження додаткових карток
+- **Обрані** - Збереження стану при оновленні сторінки
+- **Формат пробігу** - Відображення через пробіл (5 000 km замість 5000km)
+
+### Сторінка деталей
+
+- Перехід з картки через кнопку "Read more"
+- **Форма бронювання** з нотифікацією про успішну оренду
+
+## Швидкий старт
+
+### Вимоги
+
+- Node.js ≥ 14
+- npm ≥ 9
+
+### Встановлення
 
 ```bash
+# Клонування репозиторію
+git clone <repository-url>
+cd rental-car-project
+
+# Встановлення залежностей
+npm install
+
+# Запуск development сервера
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+Відкрийте http://localhost:3000 у браузері.
+
+Змінні середовища
+Створіть .env
+
+NEXT_PUBLIC_API_URL=your_api_url_here
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Ключові особливості реалізації
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Фільтрація на бекенді
+Всі фільтри виконуються на сервері для оптимальної продуктивності
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Підтримка комбінованих фільтрів (бренд + ціна + пробіг)
 
-## Learn More
+Управління станом
+Zustand для глобального стану (обрані автомобілі)
 
-To learn more about Next.js, take a look at the following resources:
+Локальний стан для UI компонентів
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Server State для даних з API
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Пагінація
+Кнопка "Load More" для покращеного UX
 
-## Deploy on Vercel
+Завантаження даних з урахуванням активних фільтрів
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Форма бронювання
+Кастомний DatePicker з валідацією дат
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Запобігання бронюванню в минулі дати
+
+Сповіщення про успішне виконання
+
+SEO оптимізація
+Open Graph теги для соціальних мереж
+
+Twitter Cards
+
+Динамічні метатеги для кожної сторінки
+
+Адаптивні meta description
+
+Доступні скрипти
+npm run dev # Запуск dev server
+npm run build # Продакшн білд
+npm run start # Запуск зібраної програми
+
+Розгортання
+Vercel (рекомендовано)
+
+npm run build
+
+### Деployment через Vercel CLI або GitHub integration
+
+## Гаєвой Сергій
+
+Email: gaevuha@gmail.com
+https://github.com/Gaevuha
+
+Ліцензія
+Безкоштовна
+
+Rental Car — знайдіть ідеальний автомобіль для вашої подорожі!
+
+Технології: Next.js 15 • React 18 • TypeScript • Zustand • CSS Modules

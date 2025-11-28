@@ -12,8 +12,8 @@ interface FiltersClientProps {
 export default function FiltersClient({ brands }: FiltersClientProps) {
   const { setFilters, loadCars } = useCarsStore();
 
-  const [brand, setBrand] = useState(""); // "" = всі бренди
-  const [price, setPrice] = useState(""); // "" = всі ціни
+  const [brand, setBrand] = useState("");
+  const [price, setPrice] = useState("");
   const [minMileage, setMinMileage] = useState("");
   const [maxMileage, setMaxMileage] = useState("");
 
@@ -33,19 +33,17 @@ export default function FiltersClient({ brands }: FiltersClientProps) {
 
   return (
     <div className={styles.filtersContainer}>
-      {/* BRAND */}
       <div className={styles.filterBlock}>
         <CustomSelect
           label="Car brand"
-          options={["", ...brands]} // перший пункт порожній
+          options={["", ...brands]}
           value={brand}
           onChange={setBrand}
-          placeholder="Choose a brand" // відображається якщо value = ""
-          formatOptionLabel={(option) => option || "(All)"} // у випадаючому буде "(All)"
+          placeholder="Choose a brand"
+          formatOptionLabel={(option) => option || "(All)"}
         />
       </div>
 
-      {/* PRICE */}
       <div className={styles.filterBlock}>
         <CustomSelect
           label="Price / 1 hour"
@@ -57,7 +55,6 @@ export default function FiltersClient({ brands }: FiltersClientProps) {
         />
       </div>
 
-      {/* MILEAGE */}
       <div className={styles.filterBlock}>
         <label className={styles.filterLabel}>Car mileage / km</label>
         <div style={{ display: "flex" }}>
@@ -78,7 +75,6 @@ export default function FiltersClient({ brands }: FiltersClientProps) {
         </div>
       </div>
 
-      {/* BUTTON */}
       <div className={`${styles.filterBlock} ${styles.searchBlock}`}>
         <button className={styles.searchBtn} onClick={handleSearch}>
           Search
