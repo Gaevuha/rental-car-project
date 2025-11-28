@@ -1,6 +1,9 @@
 // app/catalog/page.tsx
 import { fetchCarsServer, fetchBrandsServer } from "@/lib/api/serverApi";
 import CatalogClient from "./CatalogPageClient";
+import { generatePageMetadata } from "../layout";
+
+export const metadata = generatePageMetadata("catalog");
 
 interface CatalogPageProps {
   searchParams?: Promise<{

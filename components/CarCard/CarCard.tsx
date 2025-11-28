@@ -17,8 +17,8 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
   const isFavorite = favorites.some((favCar) => favCar.id === car.id);
 
   const handleToggleFavorite = (e: React.MouseEvent) => {
-    e.preventDefault(); // Запобігаємо переходу по посиланню
-    e.stopPropagation(); // Запобігаємо всплиттю події
+    e.preventDefault();
+    e.stopPropagation();
 
     if (isFavorite) {
       removeFromFavorites(car.id);
@@ -58,7 +58,11 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
           </span>
         </div>
       </div>
-      <Link href={`/catalog/${car.id}`} className={styles.readMoreLink}>
+      <Link
+        href={`/catalog/${car.id}`}
+        className={styles.readMoreLink}
+        aria-label={`View details about ${car.brand} ${car.model}`}
+      >
         Read more
       </Link>
       <button

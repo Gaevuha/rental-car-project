@@ -1,7 +1,7 @@
 .hero {
   min-height: 100vh;
   border-top: 4px solid var(--color-white);
-  background-image: url("/img/picture.webp");
+  background-image: url("/img/picture-car.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -13,7 +13,7 @@
 
 @media (min-resolution: 192dpi) {
   .hero {
-    background-image: url(/img/picture@2x.webp);
+    background-image: url(/img/picture-car@2x.webp);
   }
 }
 

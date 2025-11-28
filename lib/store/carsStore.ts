@@ -1,6 +1,6 @@
 // /lib/store/carsStore.ts
 import { create } from "zustand";
-import { persist } from "zustand/middleware"; // Додаємо persist для автоматичного збереження
+import { persist } from "zustand/middleware";
 import { fetchCarsClient } from "@/lib/api/clientApi";
 import { Car, CarsFilters, CarsResponse } from "@/types/car";
 
@@ -66,19 +66,19 @@ export const useCarsStore = create<CarsState>()(
         } catch (err) {
           console.error("Failed to load cars:", err);
           set({
-            error: "Не вдалося завантажити автомобілі",
+            error: "Failed to load cars",
             isLoading: false,
           });
         }
       },
 
       setFilters: (filters) => {
-        set({ filters, page: 1 }); // Скидаємо сторінку при зміні фільтрів
+        set({ filters, page: 1 });
       },
 
       addToFavorites: (car) => {
         const { favorites } = get();
-        // Перевіряємо, чи вже є в улюблених
+
         if (!favorites.some((fav) => fav.id === car.id)) {
           const newFavorites = [...favorites, car];
           set({ favorites: newFavorites });
@@ -100,7 +100,7 @@ export const useCarsStore = create<CarsState>()(
     }),
     {
       name: "cars-storage",
-      partialize: (state) => ({ favorites: state.favorites }), // Зберігаємо тільки улюблені
+      partialize: (state) => ({ favorites: state.favorites }),
     }
   )
 );

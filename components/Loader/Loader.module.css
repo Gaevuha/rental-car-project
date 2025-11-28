@@ -4,8 +4,8 @@
   display: block;
   position: relative;
   top: 45px;
-  width: 75px; /*85*/
-  height: 16px; /**50*/
+  width: 75px;
+  height: 16px;
   margin: 0 auto;
   background-repeat: no-repeat;
   background-image: linear-gradient(#9c9c9c 50px, transparent 0),
