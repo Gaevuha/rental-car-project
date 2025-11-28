@@ -22,7 +22,7 @@ Rental Car — це сучасний веб-застосунок для орен
 | **API**              | REST API, Server Actions                                        |
 | **Стилізація**       | CSS Modules, Modern Normalize                                   |
 | **Шрифти**           | Manrope (Google Fonts)                                          |
-| **Деployment**       | Vercel                                                          |
+| **Dеployment**       | Vercel                                                          |
 
 ## Функціональні вимоги (згідно ТЗ)
 
